@@ -30,7 +30,6 @@ local function CreateDutyBlips(playerId, playerLabel, playerLocation)
 end
 
 RegisterNetEvent('jobblips:client:UpdateBlips', function(players)
-    print(PlayerJob.type)
     if PlayerJob and PlayerJob.onduty then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
