@@ -26,6 +26,7 @@ end
 
 
 CreateThread(function()
+    Wait(20000)
     while true do
         Wait(5000)
         UpdateBlips()
