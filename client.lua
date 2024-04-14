@@ -37,11 +37,13 @@ RegisterNetEvent('jobblips:client:UpdateBlips', function(players)
             end
         end
         DutyBlips = {}
-        if players then
-            for _, data in pairs(players) do
-                if PlayerJob.name == data.job then
-                    local id = GetPlayerFromServerId(data.source)
-                    CreateDutyBlips(id, data.label, data.location)
+        if PlayerJob.name ~= 'unemployed' then
+            if players then
+                for _, data in pairs(players) do
+                    if PlayerJob.name == data.job then
+                        local id = GetPlayerFromServerId(data.source)
+                        CreateDutyBlips(id, data.label, data.location)
+                    end
                 end
             end
         end
@@ -92,3 +94,15 @@ RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
         DutyBlips = {}
     end
 end)
+
+CreateThread(function()
+    Caffe = AddBlipForCoord(288.27, -920.12, 29.47)
+    SetBlipSprite (Caffe, 214)
+    SetBlipDisplay(Caffe, 4)
+    SetBlipScale  (Caffe, 0.5)
+    SetBlipAsShortRange(Caffe, true)
+    SetBlipColour(Caffe, 75)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentSubstringPlayerName("Sen_itiCafe")
+    EndTextCommandSetBlipName(Caffe)
+end) 
