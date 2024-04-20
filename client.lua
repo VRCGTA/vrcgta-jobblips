@@ -37,7 +37,7 @@ RegisterNetEvent('jobblips:client:UpdateBlips', function(players)
             end
         end
         DutyBlips = {}
-        if PlayerJob.name ~= 'unemployed' then
+        if PlayerJob.name ~= 'unemployed' and PlayerJob.name ~= 'tow' and PlayerJob.name ~= 'hotdog' then
             if players then
                 for _, data in pairs(players) do
                     if PlayerJob.name == data.job then
