@@ -2,6 +2,7 @@ QBCore = exports['qb-core']:GetCoreObject()
 
 PlayerJob = {}
 local DutyBlips = {}
+local ShowAll = false
 
 -- Functions
 local function CreateDutyBlips(playerId, playerLabel, playerLocation)
@@ -29,18 +30,22 @@ local function CreateDutyBlips(playerId, playerLabel, playerLocation)
     end
 end
 
+RegisterNetEvent('jobblips:client:toggleShowAll', function()
+    ShowAll = not ShowAll
+end)
+
 RegisterNetEvent('jobblips:client:UpdateBlips', function(players)
-    if PlayerJob and PlayerJob.onduty then
+    if ShowAll or (PlayerJob and PlayerJob.onduty) then
         if DutyBlips then
             for _, v in pairs(DutyBlips) do
                 RemoveBlip(v)
             end
         end
         DutyBlips = {}
-        if PlayerJob.name ~= 'unemployed' and PlayerJob.name ~= 'tow' and PlayerJob.name ~= 'hotdog' then
+        if ShowAll or (PlayerJob.name ~= 'unemployed' and PlayerJob.name ~= 'tow' and PlayerJob.name ~= 'hotdog') then
             if players then
                 for _, data in pairs(players) do
-                    if PlayerJob.name == data.job then
+                    if ShowAll or PlayerJob.name == data.job then
                         local id = GetPlayerFromServerId(data.source)
                         CreateDutyBlips(id, data.label, data.location)
                     end
