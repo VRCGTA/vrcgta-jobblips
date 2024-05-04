@@ -42,7 +42,7 @@ RegisterNetEvent('jobblips:client:UpdateBlips', function(players)
             end
         end
         DutyBlips = {}
-        if ShowAll or (PlayerJob.name ~= 'unemployed' and PlayerJob.name ~= 'tow' and PlayerJob.name ~= 'hotdog') then
+        if ShowAll or (PlayerJob.name ~= 'unemployed' and PlayerJob.name ~= 'tow' and PlayerJob.name ~= 'hotdog' and PlayerJob.name ~= 'crazytaxi') then
             if players then
                 for _, data in pairs(players) do
                     if ShowAll or PlayerJob.name == data.job then
