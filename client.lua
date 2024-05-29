@@ -45,7 +45,7 @@ RegisterNetEvent('jobblips:client:UpdateBlips', function(players)
         if ShowAll or (PlayerJob.name ~= 'unemployed' and PlayerJob.name ~= 'tow' and PlayerJob.name ~= 'hotdog' and PlayerJob.name ~= 'crazytaxi') then
             if players then
                 for _, data in pairs(players) do
-                    if ShowAll or PlayerJob.name == data.job then
+                    if ShowAll or PlayerJob.name == data.job.name or PlayerJob.type == data.job.type then
                         local id = GetPlayerFromServerId(data.source)
                         CreateDutyBlips(id, data.label, data.location)
                     end

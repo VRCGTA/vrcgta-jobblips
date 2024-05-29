@@ -11,7 +11,7 @@ local function UpdateBlips()
             dutyPlayers[#dutyPlayers + 1] = {
                 source = v.PlayerData.source,
                 label = v.PlayerData.charinfo.firstname .. ' ' .. v.PlayerData.charinfo.lastname,
-                job = v.PlayerData.job.name,
+                job = v.PlayerData.job,
                 location = {
                     x = coords.x,
                     y = coords.y,
